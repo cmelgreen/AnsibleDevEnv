@@ -1,0 +1,166 @@
+---
+- name: Dev Setup
+  hosts: localhost
+  vars:
+  
+    folders:
+    - go
+    - python
+    - js
+    - pemKeys
+    
+    downloads:
+      url:
+      - https://deb.nodesource.com/setup_14.x
+      - https://repo.anaconda.com/archive/Anaconda3-2020.02-Linux-x86_64.sh
+      - https://storage.googleapis.com/golang/getgo/installer_linux
+
+      sudo_files:
+      - setup_14.x
+       - Anaconda3-2020.02-Linux-x86_64.sh
+        
+      user_files:
+      - installer_linux
+      
+    keys:
+      - https://packages.microsoft.com/keys/microsoft.asc
+      - https://download.docker.com/linux/debian/gpg
+      
+    repos:
+      - deb [trusted=yes arch=amd64] https://download.docker.com/linux/debian {{ docker_version.stdout }} stable
+      - deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main
+      
+    packages:
+      - apt-transport-https 
+      - ca-certificates 
+      - gnupg2 
+      - software-properties-common
+      - libgl1-mesa-glx 
+      - libegl1-mesa 
+      - libxrandr2 
+      - libxrandr2 
+      - libxss1 
+      - libxcursor1 
+      - libxcomposite1 
+      - libasound2 
+      - libxi6 
+      - libxtst6
+      - libpq-dev 
+      - python3-dev
+      - python3-pip
+      - protobuf-compiler
+      - apt-transport-https
+      - code
+      - nodejs
+      - postgresql-11
+      - docker-ce
+      
+    node_lib:
+      - react
+      - react-scripts
+      - react-dom
+      
+    go_get:
+      - go get github.com/lib/pq
+      - export
+      - GO111MODULE=on go get github.com/golang/protobuf/protoc-gen-go
+      - GO111MODULE=on go get -u google.golang.org/grpc
+      
+    pip:
+      - psycopg2
+      
+    git_config:
+      name: 
+        - user.name
+        - user.email
+        - color.ui
+      value:
+        - cmelgreen
+        - cmelgreen@gmail.com
+        - true
+
+  tasks:
+    - name: make folders
+      file:
+        path: './{{ item }}'
+        mode: 0755
+        state: directory
+      with_items: '{{ folders }}'
+      
+    - name: install rpm
+      apt:
+        name: rpm
+        state: latest
+        update_cache: yes
+      become: yes
+        
+    - name: add keys
+      apt_key:
+        state: present
+        url: '{{ item }}'
+      with_items: '{{ keys }}'
+      become: yes
+      
+    - name: save docker version to variable
+      shell: lsb_release -cs
+      register: docker_version
+      
+    - name: add repositories
+      apt_repository: 
+        repo: '{{ item }}'
+        state: present
+      with_items: '{{ repos }}'
+      become: yes
+        
+    - name: download files
+      get_url: 
+        url: '{{ item }}'
+        dest: .
+        mode: +x
+      with_items: '{{ downloads.url }}'
+        
+    - name: run as root downloads
+      command: './{{ item }}'
+      with_items: '{{ downloads.sudo_files }}'
+      become: yes
+      
+    - name: run as user downloads
+      command: './{{ item }}'
+      with_items: '{{ downloads.user_files }}'
+
+    - name: add source ./.bashrc to .bash_profile
+      lineinfile:
+        path: ./.bash_profile
+        line: 'source ./.bashrc'
+        
+    - name: install packages
+      apt: 
+        name: '{{ packages }}'
+        state: latest
+        update_cache: yes
+      become: yes
+       
+    - name: set docker permissions
+      file:
+        path: /var/run/docker.sock
+        mode: 0666
+      become: yes
+
+    - name: install react
+      npm:
+        name: '{{ item }}'
+        global: yes
+        state: latest
+      with_items: '{{ node_lib }}'
+      become: yes
+
+    - name: go get some libraries
+      shell: '. ~/.bash_profile && {{ item }}'
+      args:
+        executable: /bin/bash
+      with_items: '{{ go_get }}'
+
+
+    - name: pip some stuff conda has a hard time with
+      pip:
+        name: '{{ pip }}'
