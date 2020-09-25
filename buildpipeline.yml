@@ -9,7 +9,7 @@
       - deb [arch=amd64] https://storage.googleapis.com/bazel-apt stable jdk1.8
       
       packages:
-      - bazel-1.0.0
+      - bazel
       
   tasks:
     - name: add keys
