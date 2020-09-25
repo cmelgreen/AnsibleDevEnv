@@ -19,7 +19,7 @@
       with_items: '{{ keys }}'
       become: yes
 
-   - name: add repositories
+    - name: add repositories
       apt_repository: 
         repo: '{{ item }}'
         state: present
