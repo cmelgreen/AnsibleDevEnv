@@ -1,0 +1,34 @@
+---
+- name: Dev Setup
+  hosts: localhost
+  vars:
+      keys:
+      - https://bazel.build/bazel-release.pub.gpg
+      
+      repos:
+      - deb [arch=amd64] https://storage.googleapis.com/bazel-apt stable jdk1.8
+      
+      packages:
+      - bazel-1.0.0
+      
+  tasks:
+    - name: add keys
+      apt_key:
+        state: present
+        url: '{{ item }}'
+      with_items: '{{ keys }}'
+      become: yes
+
+   - name: add repositories
+      apt_repository: 
+        repo: '{{ item }}'
+        state: present
+      with_items: '{{ repos }}'
+      become: yes
+
+    - name: install packages
+      apt: 
+        name: '{{ packages }}'
+        state: latest
+        update_cache: yes
+      become: yes
