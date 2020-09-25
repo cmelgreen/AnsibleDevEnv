@@ -4,12 +4,15 @@
   vars:
       keys:
       - https://bazel.build/bazel-release.pub.gpg
+      - https://pkg.jenkins.io/debian/jenkins.io.key
       
       repos:
       - deb [arch=amd64] https://storage.googleapis.com/bazel-apt stable jdk1.8
+      - deb https://pkg.jenkins.io/debian binary/
       
       packages:
       - bazel
+      - jenkins
       
   tasks:
     - name: add keys
