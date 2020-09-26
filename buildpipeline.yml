@@ -12,6 +12,7 @@
       
       packages:
       - bazel
+      - openjdk-8-jdk
       - jenkins
       
   tasks:
