@@ -20,7 +20,7 @@
         - https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip
         
         sudo_files:
-        - awscli-exe-linux-x86_64.zip
+        - aws/install
       
   tasks:
     - name: add keys
