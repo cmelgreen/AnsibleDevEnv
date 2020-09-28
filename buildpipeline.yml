@@ -15,6 +15,13 @@
       - default-jdk
       - jenkins
       
+      downloads:
+        urls:
+        - https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip
+        
+        sudo_files:
+        - awscli-exe-linux-x86_64.zip
+      
   tasks:
     - name: add keys
       apt_key:
@@ -36,3 +43,16 @@
         state: latest
         update_cache: yes
       become: yes
+      
+    - name: download and unzip files
+      unarchive:
+        src: '{{ item }}'
+        dest: .
+        copy: no
+      with_items: '{{ downloads.urls }}'
+      
+    - name: run as root downloads
+      command: './{{ item }}'
+      with_items: '{{ downloads.sudo_files }}'
+      become: yes
+        
