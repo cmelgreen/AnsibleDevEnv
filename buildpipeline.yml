@@ -5,15 +5,18 @@
       keys:
       - https://bazel.build/bazel-release.pub.gpg
       - https://pkg.jenkins.io/debian/jenkins.io.key
+      - https://apt.releases.hashicorp.com/gpg
       
       repos:
       - deb [arch=amd64] https://storage.googleapis.com/bazel-apt stable jdk1.8
       - deb https://pkg.jenkins.io/debian binary/
+      - deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) ma
       
       packages:
       - bazel
       - default-jdk
       - jenkins
+      - terraform
       
       downloads:
         urls:
