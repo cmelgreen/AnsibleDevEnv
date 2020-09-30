@@ -10,7 +10,7 @@
       repos:
       - deb [arch=amd64] https://storage.googleapis.com/bazel-apt stable jdk1.8
       - deb https://pkg.jenkins.io/debian binary/
-      - deb [arch=amd64] https://apt.releases.hashicorp.com buster ma
+      - deb [arch=amd64] https://apt.releases.hashicorp.com {{ docker_version.stdout }} ma
       
       packages:
       - bazel
@@ -32,6 +32,10 @@
         url: '{{ item }}'
       with_items: '{{ keys }}'
       become: yes
+      
+    - name: save docker version to variable
+      shell: lsb_release -cs
+      register: docker_version
 
     - name: add repositories
       apt_repository: 
