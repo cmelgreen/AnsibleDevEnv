@@ -167,7 +167,7 @@
       pip:
         name: '{{ pip }}'
         
-    - name: Ansible delete file example
+    - name: cleanup files
       file:
         path: '/{{ item }}'
         state: absent
