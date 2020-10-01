@@ -11,6 +11,6 @@ rm setup.retry
 mv AnsibleDevEnv/buildpipeline.yml ~/
 ansible-playbook buildpipeline.yml
 rm buildpipeline.yml
-rm buildpipeline.yml
+rm buildpipeline.retry
 
 rm -rf AnsibleDevEnv
