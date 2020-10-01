@@ -31,6 +31,7 @@
       - deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main
       
     packages:
+      - acl
       - apt-transport-https 
       - ca-certificates 
       - gnupg2 
