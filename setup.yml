@@ -169,6 +169,6 @@
         
     - name: cleanup files
       file:
-        path: '/{{ item }}'
+        path: './{{ item }}'
         state: absent
       with_items: '{{ downloads.sudo_files + downloads.user_files }}'
