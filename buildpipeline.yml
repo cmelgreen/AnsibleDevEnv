@@ -62,6 +62,7 @@
       command: './{{ item }}'
       with_items: '{{ downloads.sudo_files }}'
       become: yes
+      ignore_errors: yes
       
     - name: cleanup files
       file:
