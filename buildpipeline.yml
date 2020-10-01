@@ -62,4 +62,10 @@
       command: './{{ item }}'
       with_items: '{{ downloads.sudo_files }}'
       become: yes
+      
+    - name: cleanup files
+      file:
+        path: '/{{ item }}'
+        state: absent
+      with_items: '{{ downloads.sudo_files }}'
         
