@@ -51,6 +51,7 @@
       - python3-pip
       - protobuf-compiler
       - apt-transport-https
+      - rsync
       - code
       - nodejs
       - postgresql-11
