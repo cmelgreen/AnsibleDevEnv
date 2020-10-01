@@ -166,3 +166,9 @@
     - name: pip some stuff conda has a hard time with
       pip:
         name: '{{ pip }}'
+        
+    - name: Ansible delete file example
+      file:
+        path: '/{{ item }}'
+        state: absent
+      with_items: '{{ downloads.sudo_files + downloads.user_files }}'
