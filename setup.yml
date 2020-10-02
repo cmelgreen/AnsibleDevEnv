@@ -137,6 +137,7 @@
     - name: move files
       command: 'mv {{ item }}'
       with_items: '{{ downloads.move_files }}'
+      become: yes
 
     - name: add source ./.bashrc to .bash_profile
       lineinfile:
