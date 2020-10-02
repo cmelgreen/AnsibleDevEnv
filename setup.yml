@@ -175,4 +175,6 @@
       file:
         path: './{{ item }}'
         state: absent
-      with_items: '{{ downloads.sudo_files + downloads.user_files }}'
+      with_flattened:
+      - '{{ downloads.sudo_files  }}'
+      - '{{ downloads.user_files }}'
