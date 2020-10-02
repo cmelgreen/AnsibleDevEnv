@@ -133,6 +133,10 @@
     - name: run as user downloads
       command: './{{ item }}'
       with_items: '{{ downloads.user_files }}'
+      
+    - name: move files
+      command: 'sh {{ item }}'
+      with_items: '{{ bin_files }}'
 
     - name: add source ./.bashrc to .bash_profile
       lineinfile:
@@ -165,7 +169,6 @@
       args:
         executable: /bin/bash
       with_items: '{{ go_get }}'
-
 
     - name: pip some stuff conda has a hard time with
       pip:
