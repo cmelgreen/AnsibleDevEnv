@@ -23,7 +23,7 @@
       user_files:
       - installer_linux
       
-      bin_files:
+      move_files:
       - docker-compose-Linux-x86_64 /usr/local/bin/docker-compose
       
     keys:
@@ -136,7 +136,7 @@
       
     - name: move files
       command: 'mv {{ item }}'
-      with_items: '{{ bin_files }}'
+      with_items: '{{ move_files }}'
 
     - name: add source ./.bashrc to .bash_profile
       lineinfile:
