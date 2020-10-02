@@ -176,7 +176,7 @@
         
     - name: cleanup files
       file:
-        path: './{{ item }}'
+        path: '{{ item }}'
         state: absent
       with_flattened:
       - '{{ downloads.sudo_files  }}'
