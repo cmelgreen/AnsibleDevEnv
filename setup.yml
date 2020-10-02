@@ -19,10 +19,12 @@
       sudo_files:
       - setup_14.x
        - Anaconda3-2020.02-Linux-x86_64.sh
-       - docker-compose-Linux-x86_64
         
       user_files:
       - installer_linux
+      
+      bin_files:
+      - docker-compose-Linux-x86_64 /usr/local/bin/docker-compose
       
     keys:
       - https://packages.microsoft.com/keys/microsoft.asc
