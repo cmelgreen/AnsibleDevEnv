@@ -135,7 +135,7 @@
       with_items: '{{ downloads.user_files }}'
       
     - name: move files
-      command: 'sh {{ item }}'
+      command: 'mv {{ item }}'
       with_items: '{{ bin_files }}'
 
     - name: add source ./.bashrc to .bash_profile
