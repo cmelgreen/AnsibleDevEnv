@@ -3,7 +3,8 @@
   hosts: localhost
   vars:
       folders:
-      - tf
+      - terraform
+      - packer
       
       keys:
       - https://bazel.build/bazel-release.pub.gpg
