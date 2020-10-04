@@ -28,9 +28,13 @@
       downloads:
         urls:
         - https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip
+        - https://github.com/nbering/terraform-provider-ansible/releases/download/v1.0.4/terraform-provider-ansible_1.0.4_linux_amd64.zip
         
         sudo_files:
         - aws/install
+        
+        move_files: 
+        - terraform-provider-ansible ~/.terraform.d/plugins
       
   tasks:
     - name: make folders
@@ -77,6 +81,11 @@
       with_items: '{{ downloads.sudo_files }}'
       become: yes
       ignore_errors: yes
+      
+    - name: move files
+      command: 'mv {{ item }}'
+      with_items: '{{ downloads.move_files }}'
+      become: yes
       
     - name: cleanup files
       file:
