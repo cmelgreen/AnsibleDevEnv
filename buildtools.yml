@@ -34,7 +34,8 @@
         - aws/install
         
         move_files: 
-        - terraform-provider-ansible_v1.0.4 ~/.terraform.d/plugins/terraform-provider-ansible
+        - terraform-provider-ansible_v1.0.4 terraform-provider-ansible
+        - terraform-provider-ansible ~/.terraform.d/plugins/
       
   tasks:
     - name: make folders
