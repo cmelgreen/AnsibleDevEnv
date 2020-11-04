@@ -10,7 +10,7 @@ rm setup.retry
 
 . .bash_profile
 
-mv AnsibleDevEnv/builtools.yml ~/
+mv AnsibleDevEnv/buildtools.yml ~/
 ansible-playbook buildtools.yml
 rm buildtools.yml
 rm buildtools.retry
