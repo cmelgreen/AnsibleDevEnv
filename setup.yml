@@ -29,6 +29,7 @@
     keys:
       - https://packages.microsoft.com/keys/microsoft.asc
       - https://download.docker.com/linux/debian/gpg
+      - https://www.pgadmin.org/static/packages_pgadmin_org.pub
       
     repos:
       - deb [trusted=yes arch=amd64] https://download.docker.com/linux/debian {{ docker_version.stdout }} stable
@@ -60,6 +61,7 @@
       - nodejs
       - postgresql-11
       - docker-ce
+      - pgadmin4
       
     node_lib:
       - react
