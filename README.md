@@ -25,5 +25,5 @@ Docker,
 Terraform,
 Pakcer,
 Jenkins,
-Bazel,
+Bazel
 
