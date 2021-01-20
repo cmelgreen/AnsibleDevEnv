@@ -22,7 +22,6 @@
       packages:
       - bazel
       - default-jdk
-      - jenkins
       - terraform
       - packer
       
