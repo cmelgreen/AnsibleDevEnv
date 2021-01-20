@@ -34,6 +34,7 @@
     repos:
       - deb [trusted=yes arch=amd64] https://download.docker.com/linux/debian {{ docker_version.stdout }} stable
       - deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main
+      - deb https://ftp.postgresql.org/pub/pgadmin/pgadmin4/apt/{{ docker_version.stdout }} pgadmin4 main
       
     packages:
       - acl
