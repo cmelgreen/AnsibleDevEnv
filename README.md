@@ -9,19 +9,19 @@ Copy-paste to set up a new development environment:
 
 **Languages:**
 
-Python,
+- Python,
 Go,
 NodeJS,
 React
 
 **Databases:**
 
-Postgres,
+- Postgres,
 PGAdmin4,
 
 **DevOps:**
 
-Docker,
+- Docker,
 Terraform,
 Pakcer,
 Jenkins,
