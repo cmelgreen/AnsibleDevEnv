@@ -5,7 +5,7 @@
       folders:
       - terraform
       - packer
-      - ~/.terraform.d/plugins
+      - .terraform.d/plugins
       
       keys:
       - https://bazel.build/bazel-release.pub.gpg
