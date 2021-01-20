@@ -29,17 +29,14 @@
     keys:
       - https://packages.microsoft.com/keys/microsoft.asc
       - https://download.docker.com/linux/debian/gpg
-      - https://www.pgadmin.org/static/packages_pgadmin_org.pub
       
     repos:
       - deb [trusted=yes arch=amd64] https://download.docker.com/linux/debian {{ docker_version.stdout }} stable
       - deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main
-      - deb https://ftp.postgresql.org/pub/pgadmin/pgadmin4/apt/{{ docker_version.stdout }} pgadmin4 main
       
     packages:
       - acl
       - apt-transport-https 
-      - apt-utils
       - ca-certificates 
       - gnupg2 
       - software-properties-common
@@ -63,7 +60,6 @@
       - nodejs
       - postgresql-11
       - docker-ce
-      - pgadmin4
       
     node_lib:
       - react
