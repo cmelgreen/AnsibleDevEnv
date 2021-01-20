@@ -39,6 +39,7 @@
     packages:
       - acl
       - apt-transport-https 
+      - apt-utils
       - ca-certificates 
       - gnupg2 
       - software-properties-common
