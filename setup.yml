@@ -30,10 +30,12 @@
       - https://packages.microsoft.com/keys/microsoft.asc
       - https://download.docker.com/linux/debian/gpg
       - https://www.pgadmin.org/static/packages_pgadmin_org.pub
+      - https://www.postgresql.org/media/keys/ACCC4CF8.asc
       
     repos:
       - deb [trusted=yes arch=amd64] https://download.docker.com/linux/debian {{ docker_version.stdout }} stable
       - deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main
+      - deb http://apt.postgresql.org/pub/repos/apt/ {{ docker_version.stdout }} main
       - deb https://ftp.postgresql.org/pub/pgadmin/pgadmin4/apt/{{ docker_version.stdout }} pgadmin4 main
       
     packages:
