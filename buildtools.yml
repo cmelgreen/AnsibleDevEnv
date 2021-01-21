@@ -35,7 +35,7 @@
         
         move_files: 
         - terraform-provider-ansible_v1.0.4 terraform-provider-ansible
-        - terraform-provider-ansible ~/.terraform.d/plugins/
+        - terraform-provider-ansible .terraform.d/plugins/
       
   tasks:
     - name: make folders
@@ -86,7 +86,6 @@
     - name: move files
       command: 'mv {{ item }}'
       with_items: '{{ downloads.move_files }}'
-      become: yes
       
     - name: cleanup files
       file:
