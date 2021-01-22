@@ -31,5 +31,3 @@ git config --global color.ui true
 
 yes "" | ssh-keygen -t rsa -C "$email"
 cat "$HOME"/.ssh/id_rsa.pub
-
-rm -rf ./SetupDebianDevEnv
