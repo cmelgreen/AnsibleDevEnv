@@ -145,9 +145,9 @@
       with_items: '{{ downloads.move_files }}'
       become: yes
 
-    - name: add source ./.bashrc to .bash_profile
+    - name: add source ./.bashrc to .profile
       lineinfile:
-        path: ./.bash_profile
+        path: ./.profile
         line: 'source ./.bashrc'
         
     - name: install packages
