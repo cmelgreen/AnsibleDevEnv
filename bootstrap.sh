@@ -16,7 +16,7 @@ sudo ansible-playbook setup.yml
 rm setup.yml
 rm setup.retry
 
-. .bash_profile
+. .profile
 
 sleep 10
 
