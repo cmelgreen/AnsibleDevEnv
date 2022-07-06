@@ -9,16 +9,20 @@ cd ~
 sudo apt update && sudo apt -y upgrade
 sudo apt install -y ansible
 
+sleep 10
+
 mv AnsibleDevEnv/setup.yml ~/
-ansible-playbook setup.yml
+sudo ansible-playbook setup.yml
 rm setup.yml
 rm setup.retry
 
 . .bash_profile
 
+sleep 10
+
 # Add infrastructure as code tools
 mv AnsibleDevEnv/buildtools.yml ~/
-ansible-playbook buildtools.yml
+sudo ansible-playbook buildtools.yml
 rm buildtools.yml
 rm buildtools.retry
 
